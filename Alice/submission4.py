@@ -1,4 +1,4 @@
-# Leadrboard score 0.95246
+# Leadrboard score 95.138
 
 from matplotlib import pyplot as plt
 import seaborn as sns
@@ -112,6 +112,9 @@ test_df_newfeatures['sub10'] = (test_df[times].count(axis = 1) < 10) * 1 - 0.5
 train_df_newfeatures['dow'] = train_df['time1'].apply(lambda ts : ts.date().weekday())
 train_df_newfeatures['active_days'] = (train_df_newfeatures['dow'].apply(lambda x : x in [0, 1, 3, 4]) ) * 1 - 0.5
 
+train_df_newfeatures['yearmonth'] = train_df['time1'].apply(lambda ts : (ts.year*100 + ts.month * 8))
+test_df_newfeatures['yearmonth'] = train_df['time1'].apply(lambda ts : (ts.year*100 + ts.month * 8))
+
 test_df_newfeatures['dow'] = test_df['time1'].apply(lambda ts : ts.date().weekday())
 test_df_newfeatures['active_days'] = (test_df_newfeatures['dow'].apply(lambda x : x in [0, 1, 3, 4]) ) * 1 - 0.5
 
@@ -135,21 +138,24 @@ scaler.fit(train_df_newfeatures['dow'].values.reshape(-1, 1))
 train_df_newfeatures['dow_scaled'] = scaler.fit_transform(train_df_newfeatures['dow'].values.reshape(-1,1))
 test_df_newfeatures['dow_scaled'] = scaler.transform(test_df_newfeatures['dow'].values.reshape(-1,1))
 
+scaler.fit(train_df_newfeatures['yearmonth'].values.reshape(-1, 1))
+train_df_newfeatures['yearmonth_scaled'] = scaler.fit_transform(train_df_newfeatures['yearmonth'].values.reshape(-1,1))
+test_df_newfeatures['yearmonth_scaled'] = scaler.transform(test_df_newfeatures['yearmonth'].values.reshape(-1,1))
+
 scaler.fit(train_df_newfeatures['sesslen'].values.reshape(-1, 1))
 train_df_newfeatures['sesslen_scaled'] = scaler.fit_transform(train_df_newfeatures['sesslen'].values.reshape(-1,1))
 test_df_newfeatures['sesslen_scaled'] = scaler.fit_transform(test_df_newfeatures['sesslen'].values.reshape(-1,1))
 ####################################
 #    Adding new features to train dataset
 ####################################
-
-X_train_new = csr_matrix(hstack([X_train, train_df_newfeatures[['dow_scaled', 'active_days', 'active_hours', 'sesslen_scaled']]]))
-X_test_new = csr_matrix(hstack([X_test, test_df_newfeatures[['dow_scaled', 'active_days', 'active_hours', 'sesslen_scaled']]]))
-
-logit = LogisticRegression(C=0.5, random_state=17, solver='liblinear')
+new_features = ['dow_scaled', 'active_days', 'active_hours', 'sesslen_scaled', 'yearmonth_scaled']
+X_train_new = csr_matrix(hstack([X_train, train_df_newfeatures[new_features]]))
+X_test_new = csr_matrix(hstack([X_test, test_df_newfeatures[new_features]]))
 cv_scores = cross_val_score(logit, X_train_new, y_train, cv=time_split, scoring='roc_auc', n_jobs=-1)
+print('num_urls + day of week')
 print(cv_scores)
 print(cv_scores.mean(), cv_scores.std())
 
 logit.fit(X_train_new, y_train)
 logit_test_pred2 = logit.predict_proba(X_test_new)[:, 1]
-write_to_submission_file(logit_test_pred2, 'subm3.csv')
+write_to_submission_file(logit_test_pred2, 'subm2.csv')
