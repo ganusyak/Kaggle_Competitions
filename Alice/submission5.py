@@ -87,12 +87,6 @@ print(X_train.shape)
 ####################################
 
 time_split = TimeSeriesSplit(n_splits=10)
-logit = LogisticRegression(C=1, random_state=17, solver='liblinear')
-
-cv_scores = cross_val_score(logit, X_train, y_train, cv=time_split, scoring='roc_auc', n_jobs=-1)
-print('Initial data')
-print(cv_scores)
-print(cv_scores.mean(), cv_scores.std())
 
 # Placeholder for some new features
 train_df_newfeatures = pd.DataFrame(index=train_df.index)
@@ -129,8 +123,8 @@ train_df_newfeatures['len9'] = (train_df[times].count(axis = 1) == 9) * 1 - 0.5
 test_df_newfeatures['len9'] = (test_df[times].count(axis = 1) == 9) * 1 - 0.5
 
 #    Day of week
-train_df_newfeatures['year'] = train_df['time1'].apply(lambda ts : ts.date().year())
-test_df_newfeatures['year'] = test_df['time1'].apply(lambda ts : ts.date().year())
+train_df_newfeatures['year'] = train_df['time1'].apply(lambda ts : ts.year)
+test_df_newfeatures['year'] = test_df['time1'].apply(lambda ts : ts.year)
 #    Active days. Alice seems to be active at 0, 1, 3 and 4 days if week
 
 train_df_newfeatures['dow'] = train_df['time1'].apply(lambda ts : ts.date().weekday())
@@ -139,12 +133,13 @@ train_df_newfeatures['active_days'] = (train_df_newfeatures['dow'].apply(lambda 
 test_df_newfeatures['dow'] = test_df['time1'].apply(lambda ts : ts.date().weekday())
 test_df_newfeatures['active_days'] = (test_df_newfeatures['dow'].apply(lambda x : x in [0, 1, 3, 4]) ) * 1 - 0.5
 
-
+# Active hours
+active_hours = [12, 13, 16, 17, 18]
 train_df_newfeatures['hour'] = train_df['time1'].apply(lambda ts : ts.hour)
-train_df_newfeatures['active_hours'] = (train_df_newfeatures['hour'].apply(lambda x : x in [12, 13, 16, 17, 18]) ) * 1 - 0.5
+train_df_newfeatures['active_hours'] = (train_df_newfeatures['hour'].apply(lambda x : x in active_hours) ) * 1 - 0.5
 
 test_df_newfeatures['hour'] = test_df['time1'].apply(lambda ts : ts.hour)
-test_df_newfeatures['active_hours'] = (test_df_newfeatures['hour'].apply(lambda x : x in [12, 13, 16, 17, 18]) ) * 1 - 0.5
+test_df_newfeatures['active_hours'] = (test_df_newfeatures['hour'].apply(lambda x : x in active_hours) ) * 1 - 0.5
 
 train_df_newfeatures['sesslen'] = (train_df[times].max(axis = 1) - train_df[times].min(axis = 1)).apply(lambda ts: round(ts.seconds))
 test_df_newfeatures['sesslen'] = (test_df[times].max(axis = 1) - test_df[times].min(axis = 1)).apply(lambda ts: round(ts.seconds))
@@ -154,7 +149,7 @@ test_df_newfeatures['sesslen'] = (test_df[times].max(axis = 1) - test_df[times].
 ####################################
 
 scaler = StandardScaler()
-
+scaler.fit(train_df_newfeatures['year'].values.reshape(-1, 1))
 train_df_newfeatures['year_scaled'] = scaler.fit_transform(train_df_newfeatures['year'].values.reshape(-1,1))
 test_df_newfeatures['year_scaled'] = scaler.transform(test_df_newfeatures['year'].values.reshape(-1,1))
 
@@ -169,16 +164,15 @@ test_df_newfeatures['sesslen_scaled'] = scaler.fit_transform(test_df_newfeatures
 #    Adding new features to train dataset
 ####################################
 
-new_features = ['dow_scaled', 'year_scaled','active_days', 'active_hours', 'sesslen_scaled']
+new_features = ['dow_scaled', 'year_scaled','active_days', 'active_hours', 'sesslen_scaled', 'len2', 'len1'] #
 
-X_train_new = csr_matrix(hstack([X_train, train_df_newfeatures[new_featres]]))
+X_train_new = csr_matrix(hstack([X_train, train_df_newfeatures[new_features]]))
 X_test_new = csr_matrix(hstack([X_test, test_df_newfeatures[new_features]]))
 
-logit = LogisticRegression(C=0.4, random_state=17, solver='liblinear')
+logit = LogisticRegression(C=0.275, random_state=17, solver='liblinear')
 cv_scores = cross_val_score(logit, X_train_new, y_train, cv=time_split, scoring='roc_auc', n_jobs=-1)
-print(cv_scores)
 print(cv_scores.mean(), cv_scores.std())
 
 logit.fit(X_train_new, y_train)
 logit_test_pred2 = logit.predict_proba(X_test_new)[:, 1]
-write_to_submission_file(logit_test_pred2, 'subm3.csv')
+write_to_submission_file(logit_test_pred2, 'subm5.csv')

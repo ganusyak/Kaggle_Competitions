@@ -145,7 +145,7 @@ test_df_newfeatures['sesslen_scaled'] = scaler.fit_transform(test_df_newfeatures
 X_train_new = csr_matrix(hstack([X_train, train_df_newfeatures[['dow_scaled', 'active_days', 'active_hours', 'sesslen_scaled']]]))
 X_test_new = csr_matrix(hstack([X_test, test_df_newfeatures[['dow_scaled', 'active_days', 'active_hours', 'sesslen_scaled']]]))
 
-logit = LogisticRegression(C=0.5, random_state=17, solver='liblinear')
+logit = LogisticRegression(C=0.4, random_state=17, solver='liblinear')
 cv_scores = cross_val_score(logit, X_train_new, y_train, cv=time_split, scoring='roc_auc', n_jobs=-1)
 print(cv_scores)
 print(cv_scores.mean(), cv_scores.std())
