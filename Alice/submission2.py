@@ -1,4 +1,4 @@
-# Leadrboard score 95.109
+# Leadrboard score 95.138
 
 from matplotlib import pyplot as plt
 import seaborn as sns
@@ -122,21 +122,28 @@ train_df_newfeatures['active_hours'] = (train_df_newfeatures['hour'].apply(lambd
 test_df_newfeatures['hour'] = test_df['time1'].apply(lambda ts : ts.hour)
 test_df_newfeatures['active_hours'] = (test_df_newfeatures['hour'].apply(lambda x : x in [12, 13, 16, 17, 18]) ) * 1 - 0.5
 
+train_df_newfeatures['sesslen'] = (train_df[times].max(axis = 1) - train_df[times].min(axis = 1)).apply(lambda ts: round(ts.seconds))
+test_df_newfeatures['sesslen'] = (test_df[times].max(axis = 1) - test_df[times].min(axis = 1)).apply(lambda ts: round(ts.seconds))
 
 ####################################
 #    Feature scaling
 ####################################
 
 scaler = StandardScaler()
+
 scaler.fit(train_df_newfeatures['dow'].values.reshape(-1, 1))
 train_df_newfeatures['dow_scaled'] = scaler.fit_transform(train_df_newfeatures['dow'].values.reshape(-1,1))
 test_df_newfeatures['dow_scaled'] = scaler.transform(test_df_newfeatures['dow'].values.reshape(-1,1))
+
+scaler.fit(train_df_newfeatures['sesslen'].values.reshape(-1, 1))
+train_df_newfeatures['sesslen_scaled'] = scaler.fit_transform(train_df_newfeatures['sesslen'].values.reshape(-1,1))
+test_df_newfeatures['sesslen_scaled'] = scaler.fit_transform(test_df_newfeatures['sesslen'].values.reshape(-1,1))
 ####################################
 #    Adding new features to train dataset
 ####################################
 
-X_train_new = csr_matrix(hstack([X_train, train_df_newfeatures[['dow', 'active_days', 'active_hours']]]))
-X_test_new = csr_matrix(hstack([X_test, test_df_newfeatures[['dow', 'active_days', 'active_hours']]]))
+X_train_new = csr_matrix(hstack([X_train, train_df_newfeatures[['dow_scaled', 'active_days', 'active_hours', 'sesslen_scaled']]]))
+X_test_new = csr_matrix(hstack([X_test, test_df_newfeatures[['dow_scaled', 'active_days', 'active_hours', 'sesslen_scaled']]]))
 cv_scores = cross_val_score(logit, X_train_new, y_train, cv=time_split, scoring='roc_auc', n_jobs=-1)
 print('num_urls + day of week')
 print(cv_scores)
@@ -144,4 +151,4 @@ print(cv_scores.mean(), cv_scores.std())
 
 logit.fit(X_train_new, y_train)
 logit_test_pred2 = logit.predict_proba(X_test_new)[:, 1]
-write_to_submission_file(logit_test_pred2, 'submission1.csv')
+write_to_submission_file(logit_test_pred2, 'subm2.csv')
