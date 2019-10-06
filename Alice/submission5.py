@@ -169,7 +169,7 @@ new_features = ['dow_scaled', 'year_scaled','active_days', 'active_hours', 'sess
 X_train_new = csr_matrix(hstack([X_train, train_df_newfeatures[new_features]]))
 X_test_new = csr_matrix(hstack([X_test, test_df_newfeatures[new_features]]))
 
-logit = LogisticRegression(C=0.275, random_state=17, solver='liblinear')
+logit = LogisticRegression(C=0.27, random_state=17, solver='liblinear')
 cv_scores = cross_val_score(logit, X_train_new, y_train, cv=time_split, scoring='roc_auc', n_jobs=-1)
 print(cv_scores.mean(), cv_scores.std())
 
