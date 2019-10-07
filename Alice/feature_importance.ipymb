@@ -89,8 +89,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "CPU times: user 28.7 s, sys: 892 ms, total: 29.6 s\n",
-      "Wall time: 22.4 s\n"
+      "CPU times: user 28.1 s, sys: 931 ms, total: 29 s\n",
+      "Wall time: 21.7 s\n"
      ]
     }
    ],
@@ -179,8 +179,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "CPU times: user 70.5 ms, sys: 120 ms, total: 191 ms\n",
-      "Wall time: 3.16 s\n"
+      "CPU times: user 79.7 ms, sys: 120 ms, total: 200 ms\n",
+      "Wall time: 3.11 s\n"
      ]
     }
    ],
@@ -1238,8 +1238,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "CPU times: user 4.13 s, sys: 160 ms, total: 4.29 s\n",
-      "Wall time: 1.46 s\n"
+      "CPU times: user 4.14 s, sys: 161 ms, total: 4.3 s\n",
+      "Wall time: 1.43 s\n"
      ]
     }
    ],
@@ -2771,7 +2771,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 38,
+   "execution_count": 28,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -2797,7 +2797,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 39,
+   "execution_count": 29,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -2807,7 +2807,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 40,
+   "execution_count": 30,
    "metadata": {},
    "outputs": [
     {
@@ -3276,7 +3276,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 41,
+   "execution_count": 31,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -3294,7 +3294,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 42,
+   "execution_count": 32,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -3304,7 +3304,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 43,
+   "execution_count": 33,
    "metadata": {},
    "outputs": [
     {
@@ -3774,7 +3774,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 44,
+   "execution_count": 34,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -3794,28 +3794,28 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 45,
+   "execution_count": 37,
    "metadata": {},
    "outputs": [],
    "source": [
-    "X_train_len1 = hstack([X_train_year, train_len1, train_len2])\n",
-    "X_test_len1 = hstack([X_test_year, test_len1, test_len2])\n",
+    "X_train_len1 = hstack([X_train_year])\n",
+    "X_test_len1 = hstack([X_test_year])\n",
     "\n",
-    "len_features = ['len1', 'len2']"
+    "len_features = []"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 46,
+   "execution_count": 38,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "CV scores [0.92402393 0.92067162 0.90947975 0.95915722 0.96049802 0.97702355\n",
-      " 0.8657327  0.96875882 0.88181607 0.9744558 ]\n",
-      "CV mean: 0.934161748300778, CV std: 0.037805607827398606\n"
+      "CV scores [0.92524929 0.92099405 0.91069862 0.95761582 0.96045078 0.97681127\n",
+      " 0.87087065 0.96871117 0.88124701 0.97443834]\n",
+      "CV mean: 0.9347087006094889, CV std: 0.036718026054484\n"
      ]
     },
     {
@@ -3884,9 +3884,9 @@
        "        </thead>\n",
        "        <tbody>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 87.96%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 87.95%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +4.919\n",
+       "        +4.918\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        cid-ed6c3e6a5c6608a4.users.storage.live.com\n",
@@ -3894,9 +3894,9 @@
        "    \n",
        "</tr>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 88.00%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 87.99%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +4.894\n",
+       "        +4.895\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        www.express.co.uk\n",
@@ -3904,7 +3904,7 @@
        "    \n",
        "</tr>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 88.04%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 88.03%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
        "        +4.871\n",
        "    </td>\n",
@@ -3916,7 +3916,7 @@
        "        \n",
        "            <tr style=\"background-color: hsl(120, 100.00%, 88.58%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +4.557\n",
+       "        +4.559\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        youwatch.org\n",
@@ -3924,7 +3924,7 @@
        "    \n",
        "</tr>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 88.64%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 88.63%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
        "        +4.526\n",
        "    </td>\n",
@@ -3934,7 +3934,7 @@
        "    \n",
        "</tr>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 88.94%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 88.93%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
        "        +4.358\n",
        "    </td>\n",
@@ -3944,9 +3944,9 @@
        "    \n",
        "</tr>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 89.02%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 89.01%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +4.312\n",
+       "        +4.314\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        vk.com\n",
@@ -3956,7 +3956,7 @@
        "        \n",
        "            <tr style=\"background-color: hsl(120, 100.00%, 89.66%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.958\n",
+       "        +3.956\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        www.banque-chalus.fr\n",
@@ -3974,7 +3974,7 @@
        "    \n",
        "</tr>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 90.07%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 90.06%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
        "        +3.737\n",
        "    </td>\n",
@@ -3984,9 +3984,9 @@
        "    \n",
        "</tr>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 90.15%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 90.14%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.691\n",
+       "        +3.693\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        i1.ytimg.com\n",
@@ -3996,7 +3996,7 @@
        "        \n",
        "            <tr style=\"background-color: hsl(120, 100.00%, 90.27%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.628\n",
+       "        +3.627\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        r4---sn-gxo5uxg-jqbe.googlevideo.com\n",
@@ -4006,7 +4006,7 @@
        "        \n",
        "            <tr style=\"background-color: hsl(120, 100.00%, 90.59%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.460\n",
+       "        +3.458\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        api.bing.com\n",
@@ -4016,7 +4016,7 @@
        "        \n",
        "            <tr style=\"background-color: hsl(120, 100.00%, 90.72%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.390\n",
+       "        +3.388\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        dub119.mail.live.com\n",
@@ -4024,7 +4024,7 @@
        "    \n",
        "</tr>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 90.76%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 90.75%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
        "        +3.371\n",
        "    </td>\n",
@@ -4036,7 +4036,7 @@
        "        \n",
        "            <tr style=\"background-color: hsl(120, 100.00%, 90.94%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.278\n",
+       "        +3.276\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        r1---sn-gxo5uxg-jqbe.googlevideo.com\n",
@@ -4044,9 +4044,9 @@
        "    \n",
        "</tr>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 90.96%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 90.95%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.267\n",
+       "        +3.268\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        media.melty.fr\n",
@@ -4056,7 +4056,7 @@
        "        \n",
        "            <tr style=\"background-color: hsl(120, 100.00%, 90.99%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.250\n",
+       "        +3.249\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        reviewer.lavoixdunord.fr\n",
@@ -4064,9 +4064,9 @@
        "    \n",
        "</tr>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 91.08%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 91.07%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.206\n",
+       "        +3.208\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        www.video.tt\n",
@@ -4076,7 +4076,7 @@
        "        \n",
        "            <tr style=\"background-color: hsl(120, 100.00%, 91.09%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.201\n",
+       "        +3.199\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        browser-update.org\n",
@@ -4086,7 +4086,7 @@
        "        \n",
        "            <tr style=\"background-color: hsl(120, 100.00%, 91.11%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.190\n",
+       "        +3.188\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        www.kelbillet.com\n",
@@ -4094,9 +4094,9 @@
        "    \n",
        "</tr>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 91.23%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 91.22%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.129\n",
+       "        +3.128\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        glee.hypnoweb.net\n",
@@ -4106,7 +4106,7 @@
        "        \n",
        "            <tr style=\"background-color: hsl(120, 100.00%, 91.28%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.100\n",
+       "        +3.098\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        www.jeux.com\n",
@@ -4114,9 +4114,9 @@
        "    \n",
        "</tr>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 91.37%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 91.36%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.057\n",
+       "        +3.058\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        tru.am\n",
@@ -4124,7 +4124,7 @@
        "    \n",
        "</tr>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 91.38%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 91.37%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
        "        +3.053\n",
        "    </td>\n",
@@ -4134,9 +4134,9 @@
        "    \n",
        "</tr>\n",
        "        \n",
-       "            <tr style=\"background-color: hsl(120, 100.00%, 91.43%); border: none;\">\n",
+       "            <tr style=\"background-color: hsl(120, 100.00%, 91.42%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +3.027\n",
+       "        +3.028\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        www.demotivateur.fr\n",
@@ -4146,7 +4146,7 @@
        "        \n",
        "            <tr style=\"background-color: hsl(120, 100.00%, 91.58%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        +2.948\n",
+       "        +2.947\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        static.programme-tv.net\n",
@@ -4157,7 +4157,7 @@
        "        \n",
        "            <tr style=\"background-color: hsl(120, 100.00%, 91.58%); border: none;\">\n",
        "                <td colspan=\"2\" style=\"padding: 0 0.5em 0 0.5em; text-align: center; border: none; white-space: nowrap;\">\n",
-       "                    <i>&hellip; 4792 more positive &hellip;</i>\n",
+       "                    <i>&hellip; 4791 more positive &hellip;</i>\n",
        "                </td>\n",
        "            </tr>\n",
        "        \n",
@@ -4165,14 +4165,14 @@
        "        \n",
        "            <tr style=\"background-color: hsl(0, 100.00%, 88.86%); border: none;\">\n",
        "                <td colspan=\"2\" style=\"padding: 0 0.5em 0 0.5em; text-align: center; border: none; white-space: nowrap;\">\n",
-       "                    <i>&hellip; 45186 more negative &hellip;</i>\n",
+       "                    <i>&hellip; 45185 more negative &hellip;</i>\n",
        "                </td>\n",
        "            </tr>\n",
        "        \n",
        "        \n",
        "            <tr style=\"background-color: hsl(0, 100.00%, 88.86%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        -4.403\n",
+       "        -4.399\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        mail.google.com\n",
@@ -4182,7 +4182,7 @@
        "        \n",
        "            <tr style=\"background-color: hsl(0, 100.00%, 87.08%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        -5.441\n",
+       "        -5.438\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        plus.google.com\n",
@@ -4192,7 +4192,7 @@
        "        \n",
        "            <tr style=\"background-color: hsl(0, 100.00%, 80.00%); border: none;\">\n",
        "    <td style=\"padding: 0 1em 0 0.5em; text-align: right; border: none;\">\n",
-       "        -10.154\n",
+       "        -10.146\n",
        "    </td>\n",
        "    <td style=\"padding: 0 0.5em 0 0.5em; text-align: left; border: none;\">\n",
        "        &lt;BIAS&gt;\n",
@@ -4258,13 +4258,11 @@
      "text": [
       "New feature weights:\n",
       "         feature      coef\n",
-      "0         active  3.736694\n",
-      "1  sess_duration -0.267096\n",
-      "2    active_days  2.029871\n",
-      "3    day_of_week -0.903758\n",
-      "4           year -0.867150\n",
-      "5           len1 -0.097500\n",
-      "6           len2  0.024482\n"
+      "0         active  3.737492\n",
+      "1  sess_duration -0.264729\n",
+      "2    active_days  2.030637\n",
+      "3    day_of_week -0.903401\n",
+      "4           year -0.866792\n"
      ]
     }
    ],
@@ -4278,17 +4276,17 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 47,
+   "execution_count": 39,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "array([False, False, False,  True,  True,  True, False,  True,  True,\n",
-       "        True])"
+       "array([False, False, False, False, False, False, False, False, False,\n",
+       "       False])"
       ]
      },
-     "execution_count": 47,
+     "execution_count": 39,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -4303,6 +4301,36 @@
    "metadata": {},
    "outputs": [],
    "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.9390908529911725 0.03159753297483898\n"
+     ]
+    }
+   ],
+   "source": [
+    "logit = LogisticRegression(C=3, random_state=17, solver='liblinear')\n",
+    "cv_scores = cross_val_score(logit, X_train_len1, y_train, cv=time_split, scoring='roc_auc', n_jobs=-1)\n",
+    "print(cv_scores.mean(), cv_scores.std())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "logit.fit(X_train_len1, y_train)\n",
+    "logit_test_pred2 = logit.predict_proba(X_test_len1)[:, 1]\n",
+    "write_to_submission_file(logit_test_pred2, 'subm5.csv')"
+   ]
   },
   {
    "cell_type": "code",
